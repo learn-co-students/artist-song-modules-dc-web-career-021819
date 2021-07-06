@@ -1,9 +1,10 @@
-require 'pry'
+require "pry"
+require_relative "../concerns/memorable.rb"
 
 class Artist
   attr_accessor :name
   attr_reader :songs
-
+  extend Memorable
   @@artists = []
 
   def initialize
@@ -12,20 +13,20 @@ class Artist
   end
 
   def self.find_by_name(name)
-    @@artists.detect{|a| a.name == name}
+    @@artists.detect { |a| a.name == name }
   end
 
   def self.all
     @@artists
   end
-
+  /
   def self.reset_all
     self.all.clear
   end
 
   def self.count
     self.all.count
-  end
+  end*/
 
   def add_song(song)
     @songs << song
@@ -37,6 +38,6 @@ class Artist
   end
 
   def to_param
-    name.downcase.gsub(' ', '-')
+    name.downcase.gsub(" ", "-")
   end
 end
